@@ -46,9 +46,11 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-    if not isinstance(first_value, int) or not isinstance(second_value, int):
-        raise TypeError("Input data must be integer")
-    return first_value * second_value
+
+    try:
+        return int(first_value) * int(second_value)
+    except TypeError:
+        raise TypeError
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -75,11 +77,11 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
         >>> "Not valid input data"
     """
     try:
-        first_value = int(first_value)
-        second_value = int(second_value)
-        return first_value * second_value
-    except (ValueError, TypeError):
-        raise ValueError("Not valid input data")
+        return int(first_value) * int(second_value)
+    except ValueError:
+        print("Not valid input data")
+        raise ValueError
+
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -102,7 +104,14 @@ def some_loop_exercise() -> list:
     """
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
-    return [i for i in range(0, 13) if i != 6 and i != 7]
+    i = 0
+    myList = []
+    while i < 13:
+        if i != 6 and i != 7:
+            myList.append(i)
+        i += 1
+    return myList
+
 
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
@@ -114,7 +123,16 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-    return [i for i in data if i > 0]
+
+    i = 0
+    length = len(data)
+    newList = []
+    while i < length:
+        if data[i] > 0:
+            newList.append(data[i])
+        i += 1
+    return newList
+
 
 
 def alphabet() -> dict:
@@ -125,8 +143,14 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    from string import ascii_lowercase
-    return dict(enumerate(ascii_lowercase, start=1))
+    myDict = {}
+    i = 97
+    j = 1
+    while i < 123:
+        myDict[j] = chr(i)
+        i += 1
+        j += 1
+    return myDict
 
 def simple_sort(data: List[int]) -> List[list]:
     """
@@ -135,14 +159,15 @@ def simple_sort(data: List[int]) -> List[list]:
         simple_sort([2, 9, 6, 7, 3, 2, 1])
         >>> [1, 2, 2, 3, 6, 7, 9]
     """
-    sorted_list = []
-    new_data = data.copy()
-    while new_data:
-        minimum = new_data[0]
-        for i in new_data:
-            if i < minimum:
-                minimum = i
-        sorted_list.append(minimum)
-        new_data.remove(minimum)
+    k = 1
+    length = len(data)
+    while k != 0:
+        k = 0
+        i = 0
+        while i + 1 < length:
+            if data[i] > data[i + 1]:
+                data[i], data[i + 1] = data[i + 1], data[i]
+                k += 1
+            i += 1
+    return data
 
-    return sorted_list
