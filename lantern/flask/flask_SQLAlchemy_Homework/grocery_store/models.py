@@ -8,9 +8,10 @@ class User(db.Model):
     name = db.Column(db.String(), nullable=False)
     email = db.Column(db.String(), nullable=False)
     password = db.Column(db.String(), nullable=False)
+    store = db.relationship('Store', backref='manager_user')
 
     def __repr__(self):
-        return f"<id: {self.user_id}, name: {self.name}, email: {self.email}>"
+        return f'<id: {self.user_id}, name: {self.name}, email: {self.email}>'
 
 
 class Good(db.Model):
@@ -19,7 +20,7 @@ class Good(db.Model):
     good_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), nullable=False)
     brand = db.Column(db.String(), nullable=False)
-    price = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Integer(), nullable=False)
 
 
 class Store(db.Model):
@@ -29,4 +30,4 @@ class Store(db.Model):
     name = db.Column(db.String(), nullable=False)
     city = db.Column(db.String(), nullable=False)
     address = db.Column(db.String(), nullable=False)
-    manager_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    manager_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
