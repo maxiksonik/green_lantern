@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from grocery_store.database import db
-from grocery_store.models import User
+from grocery_store.models import User, Good
 from flask_login import login_user
 
 auth = Blueprint('auth', __name__)
@@ -39,6 +39,12 @@ def signup():
 @auth.route('/logout')
 def logout():
     return render_template('logout.html')
+
+
+@auth.route('/all-goods')
+def all_goods():
+    goods = Good.query.all()
+    return render_template('goods.html', goods=goods)
 
 
 @auth.route('/signup', methods=['POST'])

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table border="2">
+    <caption style="font-size: 29px; color:Black">Каталог усіх продуктів</caption>
+        <tbody style="background-color:Teal; border: 1px solid black;" >
+        <tr>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Price</th>
+        </tr>
+            {% for item in goods %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td style=" border: 1px solid black">{{ item.brand }}</td>
+                    <td>{{ item.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

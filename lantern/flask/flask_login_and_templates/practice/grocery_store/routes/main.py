@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
-from grocery_store.database import db
 from flask_login import current_user
+
 
 main = Blueprint('main', __name__)
 
