@@ -2,21 +2,20 @@
 
 {% block content %}
     <table border="2">
-    <caption style="font-size: 29px; color:Black">Каталог усіх замовлень</caption>
-        <tbody style="background-color:Teal; border: 1px solid black;" >
-{#        <tr>#}
-{#            <th>Name</th>#}
-{#            <th>Brand</th>#}
-{#            <th>Price</th>#}
-{#        </tr>#}
-{#<a href="{{ url_for('auth.signup') }}" class="navbar-item">#}
-{#                            Sign Up#}
-{#                        </a>#}
-            {% for item in orders %}
-                <tr>
-                    <td> <a href="{{ url_for('main.orders', value=loop.index) }}" class="navbar-item"> {{ item }}> </a></td>
-                </tr>
-            {% endfor %}
+    <caption style="font-size: 29px; color:Black">All orders</caption>
+        <tbody style="background-color:Teal; border: 1px solid black;">
+        <tr>
+            <th> Date </th>
+            <th> Time </th>
+            <th> Order_ID </th>
+        </tr>
+        {% for order in orders %}
+            <tr>
+                <td width="100"> {{ order.created_time.year}}-{{ order.created_time.month }}-{{ order.created_time.day }}</td>
+                <td width="70">{{ order.created_time.hour}}-{{ order.created_time.minute }}</td>
+                <td> <a href="{{ url_for('main.orders', value=loop.index) }}"> {{ order.order_id }} </a></td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 {% endblock %}

@@ -8,7 +8,8 @@
     {% if stores is defined %}
       <table>
       <caption style="font-size: 29px; color:Black">You are manager in next stores</caption>
-        <tr>
+        <tbody style="background-color:Teal; border: 1px solid black;">
+          <tr>
             <th width="200">Name</th>
             <th width="100">City</th>
             <th width="300">Address</th>
@@ -20,6 +21,7 @@
                 <td>{{ item.address }}</td>
             </tr>
         {% endfor %}
+        </tbody>
     </table>
     {% endif %}
 {% endblock %}
