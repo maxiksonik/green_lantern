@@ -4,5 +4,8 @@
 <h1 class="title">
   Welcome, {{ user }}!
   Your email is {{ email }}
+  {% if store is defined %}
+      Store {{ store }}
+  {% endif %}
 </h1>
 {% endblock %}

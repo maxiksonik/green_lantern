@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from grocery_store.database import db
 from flask_login import current_user, login_required
+from grocery_store.models import Store
 
 main = Blueprint('main', __name__)
 
@@ -13,6 +14,10 @@ def index():
 @main.route('/profile')
 @login_required
 def profile():
+    All_Store = Store.query.all()
+    for store in All_Store:
+        if current_user.user_id == store.manager_id:
+            return render_template('profile.html', store=store)
     return render_template('profile.html', user=current_user.name, email=current_user.email)
 
 
