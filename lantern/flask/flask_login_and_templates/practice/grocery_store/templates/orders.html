@@ -14,7 +14,7 @@
 {#                        </a>#}
             {% for item in orders %}
                 <tr>
-                    <td> <a href="{{ url_for('main.orders', value=item.order_id) }}" class="navbar-item"> {{ item }}> </a></td>
+                    <td> <a href="{{ url_for('main.orders', value=loop.index) }}" class="navbar-item"> {{ item }}> </a></td>
                 </tr>
             {% endfor %}
         </tbody>

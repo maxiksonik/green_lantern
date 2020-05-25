@@ -2,16 +2,13 @@
 
 {% block content %}
     <table border="2">
-    <caption style="font-size: 29px; color:Black">Каталог усіх замовлень</caption>
+    <caption style="font-size: 29px; color:Black">Order details</caption>
         <tbody style="background-color:Teal; border: 1px solid black;" >
-{#        <tr>#}
-{#            <th>Name</th>#}
-{#            <th>Brand</th>#}
-{#            <th>Price</th>#}
-{#        </tr>#}
-{#<a href="{{ url_for('auth.signup') }}" class="navbar-item">#}
-{#                            Sign Up#}
-{#                        </a>#}
+            <tr>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Price</th>
+            </tr>
             {% for item in order.order_lines %}
                 <tr>
                     <td>{{ item.good.name }}</td>
@@ -19,8 +16,11 @@
                     <td>{{ item.good.price }}</td>
                 </tr>
             {% endfor %}
-             <tr>Price {{ all_sum }} </tr>
-        <td> Price </td>>
+             <tr>
+                <td> Price </td>
+                <td></td>
+                <td>{{ all_sum }}</td>
+             </tr>
         </tbody>
     </table>
 {% endblock %}
