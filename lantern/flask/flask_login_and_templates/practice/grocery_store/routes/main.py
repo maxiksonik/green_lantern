@@ -14,10 +14,13 @@ def index():
 @main.route('/profile')
 @login_required
 def profile():
-    All_Store = Store.query.all()
-    for store in All_Store:
+    all_store = Store.query.all()
+    store_by_user = []
+    for store in all_store:
         if current_user.user_id == store.manager_id:
-            return render_template('profile.html', store=store)
+            store_by_user.append(store)
+    if len(store_by_user) > 0:
+        return render_template('profile.html', user=current_user.name, email=current_user.email, stores=store_by_user)
     return render_template('profile.html', user=current_user.name, email=current_user.email)
 
 
