@@ -14,3 +14,9 @@ def index():
 @login_required
 def profile():
     return render_template('profile.html', user=current_user.name, email=current_user.email)
+
+
+@main.route('/orders')
+@login_required
+def orders():
+    return render_template('orders.html', orders=current_user.orders)

@@ -24,6 +24,7 @@ class User(db.Model, UserMixin):
     def get_id(self):
         return self.user_id
 
+
 class Good(db.Model):
     __tablename__ = "goods"
 
