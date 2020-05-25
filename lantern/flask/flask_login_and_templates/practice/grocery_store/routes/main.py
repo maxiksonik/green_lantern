@@ -17,6 +17,11 @@ def profile():
 
 
 @main.route('/orders')
+@main.route('/orders/<int:value>')
 @login_required
-def orders():
+def orders(value=None):
+    if value:
+        order = current_user.orders[value - 1]
+        all_sum = sum([line.good.price for line in current_user.orders[value - 1].order_lines])
+        return render_template('order.html', order=order, all_sum=all_sum)
     return render_template('orders.html', orders=current_user.orders)

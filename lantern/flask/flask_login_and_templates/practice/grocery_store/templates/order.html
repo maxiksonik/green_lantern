@@ -12,11 +12,15 @@
 {#<a href="{{ url_for('auth.signup') }}" class="navbar-item">#}
 {#                            Sign Up#}
 {#                        </a>#}
-            {% for item in orders %}
+            {% for item in order.order_lines %}
                 <tr>
-                    <td> <a href="{{ url_for('main.orders', value=item.order_id) }}" class="navbar-item"> {{ item }}> </a></td>
+                    <td>{{ item.good.name }}</td>
+                    <td>{{ item.good.brand }}</td>
+                    <td>{{ item.good.price }}</td>
                 </tr>
             {% endfor %}
+             <tr>Price {{ all_sum }} </tr>
+        <td> Price </td>>
         </tbody>
     </table>
 {% endblock %}
