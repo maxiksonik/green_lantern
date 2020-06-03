@@ -50,3 +50,5 @@ CREATE TABLE Menu_Dish(
     FOREIGN KEY (Menu_ID) REFERENCES Menu(Menu_ID) NOT NULL,
     FOREIGN KEY (Dish_ID) REFERENCES Dish(Dish_ID) NOT NULL
 );
+
+CREATE INDEX ixName on staff(First_name);
