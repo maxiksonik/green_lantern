@@ -3,6 +3,7 @@ from django.db.models import Index, UniqueConstraint
 from django.utils.translation import gettext_lazy as _
 
 from apps.cars.managers import CarManager, CarQuerySet
+# from apps.dealers.models import Dealer
 from common.models import BaseDateAuditModel
 
 
@@ -75,6 +76,7 @@ class Car(BaseDateAuditModel):
 
     model = models.ForeignKey(to='CarModel', on_delete=models.SET_NULL, null=True, blank=False)
     extra_title = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Title second part'))
+    # dealer = models.ForeignKey(Dealer, on_delete=models.CASCADE)
 
     # other fields ...
     #
@@ -98,7 +100,6 @@ class Car(BaseDateAuditModel):
 
     def __str__(self):
         return self.title
-
 
     class Meta:
         verbose_name = _('Car')
