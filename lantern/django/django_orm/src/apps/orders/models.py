@@ -1,4 +1,5 @@
 from django.db import models
+#from django.utils.translation import gettext_lazy as _
 #from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 
@@ -19,7 +20,15 @@ class Order(models.Model):
     first_name = models.CharField(max_length=32, unique=True)
     last_name = models.CharField(max_length=32, unique=True)
     email = models.EmailField()
-    # phone = PhoneNumberField(blank=True)
+    #phone = PhoneNumberField(blank=True)
     message = models.TextField(max_length=500)
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default=STATUS_PROCESSED, blank=True)
     car = models.ManyToManyField(to='cars.Car')
+
+    # class Meta:
+    #     verbose_name = _('Order')
+    #     verbose_name_plural = _('Orders')
+    #
+    #     indexes = [
+    #         Index(fields=['last_name', 'phone'])
+    #     ]
