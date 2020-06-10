@@ -22,7 +22,7 @@ class Order(models.Model):
     email = models.EmailField(unique=True)
     phone = PhoneField(null=False, blank=True, unique=True)
     message = models.TextField(max_length=500, blank=True)
-    status = models.CharField(max_length=9, choices=STATUS_CHOICES, default=STATUS_PROCESSED)
+    status = models.CharField(max_length=9, choices=STATUS_CHOICES, default=STATUS_PROCESSED, blank=True)
     car = models.ManyToManyField(to='cars.Car', related_name='orders')
 
     class Meta:
