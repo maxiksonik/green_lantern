@@ -5,11 +5,26 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Dealer(User):
-    Title = models.CharField(max_length=64)
+    city = models.ForeignKey(to='City', related_name='dealers', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _('Dealer')
         verbose_name_plural = _('Dealer')
 
-    # def __str__(self):
-    #     return self.name
+    @property
+    def title(self):
+        return f'{self.get_full_name()} from {self.city.name}, email: {self.email}'
+
+    def __str__(self):
+        return self.title
+
+
+class City(models.Model):
+    name = models.CharField(max_length=30)
+    country = models.ForeignKey(to='Country', on_delete=models.SET_NULL, null=True, related_name='cities')
+
+
+class Country(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    code = models.IntegerField(null=True, blank=True, unique=True)
+
