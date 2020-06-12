@@ -114,7 +114,7 @@ class Car(BaseDateAuditModel):
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default=STATUS_PENDING, blank=True)
     dealer = models.ForeignKey(to='dealers.Dealer', on_delete=models.CASCADE, related_name='cars', null=True)
 
-    model = models.ForeignKey(to='CarModel', on_delete=models.SET_NULL, null=True)
+    model = models.ForeignKey(to='CarModel', on_delete=models.SET_NULL, null=True, related_name='cars')
     extra_title = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Title second part'))
     engine_type = models.CharField(max_length=2, choices=ENGINE_TYPE_CHOICES)
     fuel_type = models.CharField(max_length=2, choices=FUEL_TYPE_CHOICES)
