@@ -7,7 +7,7 @@ from tests.fixtures.cars import CarFactory, CarModelFactory, CarBrandFactory
 @pytest.mark.django_db()
 def test_car_photos():
     brand = CarBrandFactory(name='Audi')
-    car = CarFactory(model=CarModelFactory(name='A4', brand=brand), extra_title='Best deal')
+    car = CarFactory(model=CarModelFactory(name='A4', brand=brand), extra_title='Best deal', price='123')
 
     assert Car.objects.count() == 1
     assert car.title == 'Audi Best deal'
