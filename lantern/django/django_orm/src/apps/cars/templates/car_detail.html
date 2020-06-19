@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+    <caption style="font-size: 29px; color:Black">Cars of dealer</caption>
+        <tbody style="background-color:Teal">
+        <tr>
+            <th> Name </th>
+            <th> Price </th>
+            <th> Engine_type </th>
+            <th> Fuel_type </th>
+            <th> Population_type </th>
+            <th> Doors </th>
+            <th> Engine_capacity </th>
+            <th> Gear_case </th>
+            <th> Sitting_place </th>
+            <th> Engine_power </th>
+            <th> Number </th>
+        </tr>
+            <tr>
+                <td width="70">{{ car.model.name}}</td>
+                <td width="80">{{ car.price}}</td>
+                <td width="80">{{ car.engine_type}}</td>
+                <td width="80">{{ car.fuel_type}}</td>
+                <td width="80">{{ car.population_type}}</td>
+                <td width="80">{{ car.doors}}</td>
+                <td width="80">{{ car.engine_capacity}}</td>
+                <td width="80">{{ car.gear_case}}</td>
+                <td width="80">{{ car.sitting_place}}</td>
+                <td width="80">{{ car.engine_power}}</td>
+                <td width="80">{{ car.number}}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

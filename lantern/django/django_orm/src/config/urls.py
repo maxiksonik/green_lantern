@@ -16,15 +16,23 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+
 from django.urls import path
 from django.views.generic import TemplateView
 
+from apps.cars.views import CarsView, DealerCarListView
 from apps.newsletters.views import NewsletterView
+from common.views import LoginView, logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('success/', TemplateView.as_view(template_name="success_url.html"), name='success'),
-    path('newsletter/', NewsletterView.as_view(), name='newsletter')
+    path('newsletter/', NewsletterView.as_view(), name='newsletter'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', logout_view, name='logout'),
+    path('cars/<int:car_id>', CarsView.as_view(), name='cars'),
+    path('cars/', CarsView.as_view(), name='cars'),
+    path("cars_of_dealer/<int:dealer_id>/", DealerCarListView.as_view(), name="cars_of_dealer"),
 ]
 
 if settings.DEBUG:

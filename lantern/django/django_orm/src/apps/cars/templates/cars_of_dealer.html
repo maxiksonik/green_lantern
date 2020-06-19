@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+    <caption style="font-size: 29px; color:Black">Cars of dealer</caption>
+        <tbody style="background-color:Teal">
+        <tr>
+            <th> Name </th>
+            <th> Model </th>
+            <th> Price </th>
+        </tr>
+        {% for item in list_of_cars %}
+            <tr>
+                <td width="150">{{ item.model.brand.name}}</td>
+                <td width="70"> {{ item.model.name}}</td>
+                <td width="80">{{ item.price}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
