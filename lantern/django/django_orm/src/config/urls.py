@@ -21,6 +21,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 
 from apps.cars.views import CarsView, DealerCarListView
+
 from apps.newsletters.views import NewsletterView
 from common.views import LoginView, logout_view
 
@@ -33,6 +34,7 @@ urlpatterns = [
     path('cars/<int:car_id>', CarsView.as_view(), name='cars'),
     path('cars/', CarsView.as_view(), name='cars'),
     path("cars_of_dealer/<int:dealer_id>/", DealerCarListView.as_view(), name="cars_of_dealer"),
+
 ]
 
 if settings.DEBUG:

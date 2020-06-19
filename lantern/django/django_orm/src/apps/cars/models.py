@@ -125,7 +125,6 @@ class Car(BaseDateAuditModel):
     gear_case = models.CharField(max_length=9, choices=GEAR_CASE_CHOICES)
     sitting_place = models.IntegerField(null=True, blank=True)
     engine_power = models.IntegerField(null=True, blank=True)
-    picture = models.ImageField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
         order_number_start = 7600000
