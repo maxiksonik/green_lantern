@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table>
+    <caption style="font-size: 29px; color:Black">Order details</caption>
+        <tbody style="background-color:Teal" >
+            <tr>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Price</th>
+            </tr>
+            {% for item in order.order_lines %}
+                <tr>
+                    <td>{{ item.good.name }}</td>
+                    <td>{{ item.good.brand }}</td>
+                    <td>{{ item.good.price }}</td>
+                </tr>
+            {% endfor %}
+             <tr>
+                <td> Price </td>
+                <td></td>
+                <td>{{ all_sum }}</td>
+             </tr>
+        </tbody>
+    </table>
+{% endblock %}

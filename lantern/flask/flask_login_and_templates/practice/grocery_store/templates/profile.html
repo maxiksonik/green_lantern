@@ -5,4 +5,23 @@
   Welcome, {{ user }}!
   Your email is {{ email }}
 </h1>
+    {% if stores is defined %}
+      <table>
+      <caption style="font-size: 29px; color:Black">You are manager in next stores</caption>
+        <tbody style="background-color:Teal">
+          <tr>
+            <th width="200">Name</th>
+            <th width="100">City</th>
+            <th width="300">Address</th>
+        </tr>
+        {% for item in stores %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.city }}</td>
+                <td>{{ item.address }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
 {% endblock %}
